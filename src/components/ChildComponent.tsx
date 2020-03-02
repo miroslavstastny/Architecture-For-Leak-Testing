@@ -1,30 +1,17 @@
 import * as React from "react";
-import { Test } from "./Test";
-import {DetailsListFabric} from "./DetailsListFabric";
-
+import { DetailsListFabric } from "./DetailsListFabric";
 export const ChildComponent = () => {
   const [state, setState] = React.useState(0);
 
-  React.useEffect(() => {
-    setTimeout(() => {
-      setState(state => state + 1);
-      setTimeout(() => {
-        setState(state => state + 1);
-        setTimeout(() => {
-          setState(state => state + 1);
-        }, 500);
-      }, 500);
-    }, 5000);
+  const changeState = React.useCallback(() => {
+    setState(state => state + 1);
   }, []);
 
   return (
     <>
-      {state === 0 ? (
-        <DetailsListFabric />
-          
-      ) : (
-        <span> {state} </span>
-      )}
+      <button onClick={changeState}>Click here to set</button>
+
+      {state === 2 ? <DetailsListFabric /> : <span> {state} </span>}
     </>
   );
 };

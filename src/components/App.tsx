@@ -2,9 +2,10 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 
 import { ChildComponent } from "./ChildComponent";
+
 // import { StardustList } from "./components/StardustList";
 
-export function ChildWindow(callback: () => void) {
+export function ChildWindow(cleaner: () => void) {
   const childWindow = window.open();
 
   if (childWindow) {
@@ -27,7 +28,9 @@ export function ChildWindow(callback: () => void) {
           dispose = undefined;
         }
         clearInterval(intervalId);
-        callback();
+
+        // Run Cleanup tasks on childWindow dispose
+        cleaner();
       }
     }, 200);
   }
