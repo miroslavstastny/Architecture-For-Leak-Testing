@@ -1,24 +1,15 @@
 import * as React from "react";
-import * as ReactDOM from "react-dom";
+
 import { ChildWindow } from "./components/App";
+import { Cleanup } from "./utilities/Cleaner";
 
-
-const WaitToRenderChildwindow = 1000;
-
-function renderCleaner() {
-  console.log("Render");
-  // const div = window.document.createElement("div");
-  // window.document.body.appendChild(div);
-  // ReactDOM.render(
-  // <>
-  // <Cleaner />
-  // <MouseEventCleaner mainWindow={window} />
-  // </>, div);
-
-  // ReactDOM.unmountComponentAtNode(div);
-  // window.document.body.removeChild(div);
-}
-
-setTimeout(() => {
-  ChildWindow(renderCleaner);
-}, WaitToRenderChildwindow);
+(function() {
+  const button = document.createElement("button");
+  button.innerHTML = "Click to Open ChildWindow";
+  document.body.appendChild(button);
+  const listner = () => {
+    ChildWindow(Cleanup);
+    button.removeEventListener("click", listner);
+  };
+  button.addEventListener("click", listner);
+})();
