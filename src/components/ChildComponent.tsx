@@ -1,5 +1,8 @@
 import * as React from "react";
 import { DetailsListFabric } from "./DetailsListFabric";
+import { PopupWithMenu } from "./StardustPopupWIthMenu";
+import { AttachmentTest } from "./StardustAttachment";
+
 export const ChildComponent = () => {
   const [state, setState] = React.useState(0);
 
@@ -11,7 +14,7 @@ export const ChildComponent = () => {
     <>
       <button onClick={changeState}>Click here to set</button>
 
-      {state === 2 ? <DetailsListFabric /> : <span> {state} </span>}
+      {state === 2 ? <AttachmentTest /> : <span> {state} </span>}
     </>
   );
 };

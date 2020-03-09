@@ -2,6 +2,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 
 import { ChildComponent } from "./ChildComponent";
+import { Provider, themes } from "@fluentui/react";
 
 // import { StardustList } from "./components/StardustList";
 
@@ -16,7 +17,12 @@ export function ChildWindow(cleaner: () => void) {
 
     let dispose: (() => void) | undefined;
 
-    ReactDOM.render(<ChildComponent />, windowRoot);
+    ReactDOM.render(
+      <Provider theme={themes.teams} target={childDocument}>
+        <ChildComponent />
+      </Provider>,
+      windowRoot
+    );
     dispose = () => {
       ReactDOM.unmountComponentAtNode(windowRoot);
     };
