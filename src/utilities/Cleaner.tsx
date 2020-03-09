@@ -23,7 +23,7 @@ export async function Cleanup() {
 
   ReactDOM.render(
     <>
-      <MouseEventCleaner mainWindow={window} />
+      {/*<MouseEventCleaner mainWindow={window} />*/}
       <NestedUpdateCleaner />
     </>,
     memoryCleanupContainer

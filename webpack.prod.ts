@@ -25,6 +25,9 @@ const config: webpack.Configuration = {
       { test: /\.tsx?$/, loader: "awesome-typescript-loader" }
     ]
   },
+  optimization: {
+    minimize: false
+  },
   plugins: [htmlPlugin]
 };
 
